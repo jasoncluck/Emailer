@@ -32,10 +32,11 @@ class MessagesController < ApplicationController
     end
   end
 
+  #function to send the mail
   def sendmessage
     @message = Message.find(params[:id])
     MessageMailer.generic_email(@message).deliver
-    redirect_to messages_path
+    redirect_to messages_path, notice: 'Message was successfully sent!'
   end
 
   # GET /messages/1/edit
@@ -50,9 +51,6 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-
-        #send the email
-        MessageMailer.generic_email(@message).deliver
 
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
