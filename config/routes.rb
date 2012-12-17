@@ -1,10 +1,8 @@
 Sendmail::Application.routes.draw do
+  match 'messages/:id/send' => 'messages#sendmessage', :as => :send_letters
+
   resources :messages
-
-
-  resources :recipients
-
-
+  root:to => 'messages#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -32,6 +32,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def sendmessage
+    @message = Message.find(params[:id])
+    MessageMailer.generic_email(@message).deliver
+    redirect_to messages_path
+  end
+
   # GET /messages/1/edit
   def edit
     @message = Message.find(params[:id])
