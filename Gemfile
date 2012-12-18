@@ -10,6 +10,7 @@ gem "figaro", "~> 0.5.0"
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem "paperclip", "~> 3.0"
 
 # Gems used only for assets and not required
 # in production environments by default.

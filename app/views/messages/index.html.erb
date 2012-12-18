@@ -21,7 +21,13 @@
         <td><%= message.email %></td>
         <td><%= message.subject %></td>
         <td><%= message.body %></td>
-        <td><%= message.sent_flag %></td>
+        <td>
+          <% if not message.sent_flag %>
+            <span class="badge badge-important"></span>
+          <% else %>
+            <span class="badge badge-success"></span>
+          <% end %>
+        </td>
         <td><%=l message.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
