@@ -35,11 +35,17 @@ class MessagesController < ApplicationController
   #function to send the mail
   def sendmessage
     @message = Message.find(params[:id])
-    MessageMailer.generic_email(@message).deliver
-    #change the sent flag to true
-    @message.sent_flag = true
-    @message.save
-    redirect_to messages_path, notice: 'Message was successfully sent!'
+    #check send date
+    if @message.send_date > Date.today
+      redirect_to messages_path, alert: "Send date is still in the future.  Either change the send date or wait"
+    else
+      MessageMailer.generic_email(@message).deliver
+      #change the sent flag to true
+      @message.sent_flag = true
+      @message.save
+      redirect_to messages_path, notice: 'Message was successfully sent!'
+    end
+    
   end
 
   # GET /messages/1/edit
