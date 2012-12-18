@@ -19,15 +19,15 @@
 	      </a>
 	 
 	      <!-- Be sure to leave the brand out there if you want it shown -->
-	 	  <%= link_to "Emailer", messages_path, class: "brand" %>
+	 	  <%= link_to "Emailer", outbox_path, class: "brand" %>
 	      <!-- Everything you want hidden at 940px or less, place within here -->
 	      <div class="nav-collapse collapse">
 	        <!-- .nav, .navbar-search, .navbar-form, etc -->
 	        <ul class="nav">
-		        <li><%= link_to "Outbox", messages_path, class: "active" %></li>
-		        <li><%= link_to "Inbox", '#' %></li>
-		        <li><%= link_to "Archive", '#' %></li>
-		        <li><%= link_to "Reminder", '#' %></li>
+		        <li><%= link_to "Outbox", outbox_path, class: "active" %></li>
+		        <li><%= link_to "Inbox", inbox_path %></li>
+		        <li><%= link_to "Archive", archive_path %></li>
+		        <li><%= link_to "Reminder", reminder_path %></li>
 		    </ul>
 	      </div>
 	 

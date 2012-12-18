@@ -1,8 +1,11 @@
 Sendmail::Application.routes.draw do
   match 'messages/:id/send' => 'messages#sendmessage', :as => :send_letters
-
+  match 'messages/outbox' => 'messages#outbox', :as => :outbox
+  match 'messages/inbox' => 'messages#inbox', :as => :inbox
+  match 'messages/archive' => 'messages#archive', :as => :archive
+  match 'messages/reminder' => 'messages#reminder', :as => :reminder
   resources :messages
-  root:to => 'messages#index'
+  root:to => 'messages#outbox'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

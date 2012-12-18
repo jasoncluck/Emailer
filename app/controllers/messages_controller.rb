@@ -1,12 +1,30 @@
 class MessagesController < ApplicationController
+
+  before_filter :sort
+
+
+  #sort the messages based on whether they have been sent or not
+  def sort
+      all_messages = Message.all
+
+      @sent_messages = Array.new
+      @unsent_messages = Array.new
+
+      all_messages.each do |m|
+        if m.sent_flag
+          @sent_messages << m
+        else
+          @unsent_messages << m
+        end
+      end
+  end
   # GET /messages
   # GET /messages.json
-  def index
-    @messages = Message.all
+  def outbox
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @messages }
+      format.json { render json: @unsent_messages }
     end
   end
 
@@ -37,16 +55,30 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     #check send date
     if @message.send_date > Date.today
-      redirect_to messages_path, alert: "Send date is still in the future.  Either change the send date or wait"
+      redirect_to outbox_path, alert: "Send date is still in the future.  Either change the send date or wait"
     else
       MessageMailer.generic_email(@message).deliver
-      #change the sent flag to true
+      #change the sent flag to true and update the sent date
       @message.sent_flag = true
+      @message.sent_date = Date.today
       @message.save
-      redirect_to messages_path, notice: 'Message was successfully sent!'
+      redirect_to outbox_path, notice: 'Message was successfully sent!'
     end
-    
   end
+
+  #inbox
+  def inbox
+  end
+
+  def archive
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @sent_messages }
+    end
+  end
+
+  def reminder
+  end 
 
   # GET /messages/1/edit
   def edit
