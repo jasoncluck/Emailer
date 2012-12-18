@@ -10,7 +10,7 @@
       <th><%= model_class.human_attribute_name(:subject) %></th>
       <th><%= model_class.human_attribute_name(:body) %></th>
       <th>Sent?</th>
-      <th><%= model_class.human_attribute_name(:sent_date) %></th>
+      <th><%= model_class.human_attribute_name(:send_date) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -22,7 +22,6 @@
         <td><%= message.email %></td>
         <td><%= message.subject %></td>
         <td><%= message.body %></td>
-        <td><%= message.send_date.strftime("%d %b, %Y") %></td>
         <td>
           <% if not message.sent_flag %>
             <span class="badge badge-important"></span>
@@ -30,6 +29,8 @@
             <span class="badge badge-success"></span>
           <% end %>
         </td>
+        <td><%= message.send_date.strftime("%d %b, %Y") %></td>
+
         <td><%= message.created_at.strftime("%d %b, %Y") %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

@@ -17,7 +17,12 @@
       <%= f.text_area :body, :class => 'text_area' %>
     </div>
   </div>
-
+  <div class="control-group">
+      <%= f.label "Send Date", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.date_select :send_date %>
+      </div>
+  </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
