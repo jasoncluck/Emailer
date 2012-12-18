@@ -1,17 +1,18 @@
 class RecreateTable < ActiveRecord::Migration
-  def up
-  	def change
-  		drop_table :messages
+  	def up  		
 		create_table :messages do |t|
 	      t.string :email
 	      t.string :subject
 	      t.text :body
 	      t.boolean :sent_flag
+	      t.date :sent_date
+	      t.date :send_date
 	      t.timestamps
-	    end
-  end
-  end
+
+	  	end
+ 	end
 
   def down
+	drop_table :messages
   end
 end

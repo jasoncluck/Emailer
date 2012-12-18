@@ -13,7 +13,15 @@
 
 ActiveRecord::Schema.define(:version => 20121218051945) do
 
-# Could not dump table "messages" because of following StandardError
-#   Unknown type 'file' for column 'filepath'
+  create_table "messages", :force => true do |t|
+    t.string   "email"
+    t.string   "subject"
+    t.text     "body"
+    t.boolean  "sent_flag"
+    t.date     "sent_date"
+    t.date     "send_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
