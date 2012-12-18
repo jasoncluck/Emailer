@@ -36,6 +36,9 @@ class MessagesController < ApplicationController
   def sendmessage
     @message = Message.find(params[:id])
     MessageMailer.generic_email(@message).deliver
+    #change the sent flag to true
+    @message.sent_flag = true
+    @message.save
     redirect_to messages_path, notice: 'Message was successfully sent!'
   end
 
