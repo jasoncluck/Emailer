@@ -5,6 +5,7 @@ class RecreateTable < ActiveRecord::Migration
 	      t.string :subject
 	      t.text :body
 	      t.boolean :sent_flag
+	      t.boolean :receive_flag
 	      t.date :sent_date
 	      t.date :send_date
 	      t.timestamps

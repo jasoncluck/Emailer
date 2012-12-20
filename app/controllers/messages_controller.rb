@@ -7,14 +7,18 @@ class MessagesController < ApplicationController
   def sort
       all_messages = Message.all
 
-      @sent_messages = Array.new
-      @unsent_messages = Array.new
-
+      @sent_messages = Array.new  #archive
+      @unsent_messages = Array.new  #outbox
+      @received_messages = Array.new #inbox
       all_messages.each do |m|
-        if m.sent_flag
-          @sent_messages << m
-        else
-          @unsent_messages << m
+        if m.receive_flag
+          @received_messages << m
+        else 
+          if m.sent_flag
+            @sent_messages << m
+          else
+            @unsent_messages << m
+          end
         end
       end
   end
