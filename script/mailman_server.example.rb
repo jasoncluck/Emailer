@@ -4,14 +4,13 @@ require "rubygems"
 require "bundler/setup"
 require "mailman"
 
-Mailman.config.poll_interval = 60
+Mailman.config.poll_interval = 10
 
-Mailman.config.pop3 = {
-  server: 'pop.gmail.com', port: 995, ssl: true,
+Mailman.config.imap = {
+  server: 'imap.gmail.com', port: 993, ssl: true,
   username: "jcluck@gwmail.gwu.edu",
-  password: "Offnofx23$"
+  password: "password"
 }
-
 
 Mailman::Application.run do
   default do
