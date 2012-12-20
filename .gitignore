@@ -17,5 +17,5 @@
 # Ignore application configuration
 /config/application.yml
 
-*ignore mailman configuration
+# ignore mailman configuration
 /script/mailman_server.rb
