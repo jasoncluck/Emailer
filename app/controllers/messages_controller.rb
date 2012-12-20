@@ -129,7 +129,7 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to messages_url }
+      format.html { redirect_to outbox_path }
       format.json { head :no_content }
     end
   end
