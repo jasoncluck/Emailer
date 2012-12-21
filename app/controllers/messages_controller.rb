@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
 
       #now sort according to what type of message they are
       #received messages - from earliest to oldest
-      @received_messages = @received_messages.sort_by( &:received_time )
+      @received_messages = @received_messages.sort_by( &:received_time ).reverse
       #unsent messages from oldest to earliest
       @unsent_messages = @unsent_messages.sort_by(&:send_date)
       #sent messages from earliest to oldest
@@ -95,7 +95,6 @@ class MessagesController < ApplicationController
 
   #inbox
   def inbox
-    system('rb "script/mailman_server.rb"')
   end
 
   def archive
