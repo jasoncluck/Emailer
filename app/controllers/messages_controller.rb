@@ -1,7 +1,8 @@
 class MessagesController < ApplicationController
-
+  #sort the messages
   before_filter :sort
-
+  #authorize for certain actions
+  before_filter :admin_authorize, only: [:update, :sendmessage, :destroy]
 
   #sort the messages based on whether they have been sent or not
   def sort

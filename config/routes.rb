@@ -1,4 +1,14 @@
 Sendmail::Application.routes.draw do
+  
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  
+  resources :sessions
+  resources :users
+
+
   match 'messages/:id/send' => 'messages#sendmessage', :as => :send_letters
   match 'messages/outbox' => 'messages#outbox', :as => :outbox
   match 'messages/inbox' => 'messages#inbox', :as => :inbox
