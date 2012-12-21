@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(:version => 20121218051945) do
     t.text     "body"
     t.boolean  "sent_flag"
     t.boolean  "receive_flag"
-    t.date     "sent_date"
-    t.date     "send_date"
-    t.date     "received_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.date     "sent_time"
+    t.date     "send_date",     :default => '2012-12-20'
+    t.date     "received_time"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
 end

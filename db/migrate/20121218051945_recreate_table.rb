@@ -6,9 +6,9 @@ class RecreateTable < ActiveRecord::Migration
 	      t.text :body
 	      t.boolean :sent_flag
 	      t.boolean :receive_flag
-	      t.date :sent_date
-	      t.date :send_date
-	      t.date :received_date
+	      t.date :sent_time
+	      t.date :send_date, :default => Date.today
+	      t.date :received_time
 	      t.timestamps
 
 	  	end

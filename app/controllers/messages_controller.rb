@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
       @sent_messages = Array.new  #archive
       @unsent_messages = Array.new  #outbox
       @received_messages = Array.new #inbox
+
       all_messages.each do |m|
         if m.receive_flag
           @received_messages << m
@@ -21,6 +22,15 @@ class MessagesController < ApplicationController
           end
         end
       end
+
+      #now sort according to what type of message they are
+      #received messages - from earliest to oldest
+      @received_messages = @received_messages.sort_by( &:received_time )
+      #unsent messages from oldest to earliest
+      @unsent_messages = @unsent_messages.sort_by(&:send_date)
+      #sent messages from earliest to oldest
+      @sent_messages = @sent_messages.sort_by( &:sent_time )
+
   end
   # GET /messages
   # GET /messages.json
@@ -54,6 +64,10 @@ class MessagesController < ApplicationController
     end
   end
 
+  #index - just redirect to the outbox page
+  def index
+    redirect_to outbox_path
+  end
   #function to send the mail
   def sendmessage
     @message = Message.find(params[:id])
@@ -73,7 +87,7 @@ class MessagesController < ApplicationController
       MessageMailer.generic_email(@message).deliver
       #change the sent flag to true and update the sent date
       @message.sent_flag = true
-      @message.sent_date = Date.today
+      @message.sent_time = Time.now
       @message.save
       redirect_to result_path, notice: 'Message was successfully sent!'
     end
