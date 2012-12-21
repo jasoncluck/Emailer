@@ -57,16 +57,25 @@ class MessagesController < ApplicationController
   #function to send the mail
   def sendmessage
     @message = Message.find(params[:id])
+
+    #get result path
+    if @message.receive_flag
+      result_path = inbox_path
+    elsif @message.sent_flag
+      result_path = archive_path
+    else
+      result_path = outbox_path
+    end
     #check send date
     if @message.send_date > Date.today
-      redirect_to outbox_path, alert: "Send date is still in the future.  Either change the send date or wait"
+      redirect_to result_path, alert: "Send date is still in the future.  Either change the send date or wait"
     else
       MessageMailer.generic_email(@message).deliver
       #change the sent flag to true and update the sent date
       @message.sent_flag = true
       @message.sent_date = Date.today
       @message.save
-      redirect_to outbox_path, notice: 'Message was successfully sent!'
+      redirect_to result_path, notice: 'Message was successfully sent!'
     end
   end
 
@@ -126,10 +135,19 @@ class MessagesController < ApplicationController
   # DELETE /messages/1.json
   def destroy
     @message = Message.find(params[:id])
+
+    if @message.receive_flag
+      result_path = inbox_path
+    elsif @message.sent_flag
+      result_path = archive_path
+    else
+      result_path = outbox_path
+    end
+
     @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to outbox_path }
+      format.html { redirect_to result_path }
       format.json { head :no_content }
     end
   end
