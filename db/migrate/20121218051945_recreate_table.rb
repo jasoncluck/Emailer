@@ -8,6 +8,7 @@ class RecreateTable < ActiveRecord::Migration
 	      t.boolean :receive_flag
 	      t.date :sent_date
 	      t.date :send_date
+	      t.date :received_date
 	      t.timestamps
 
 	  	end

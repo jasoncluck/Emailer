@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(:version => 20121218051945) do
     t.boolean  "receive_flag"
     t.date     "sent_date"
     t.date     "send_date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.date     "received_date"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end

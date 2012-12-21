@@ -18,9 +18,9 @@
       <tr>
         <td><%= link_to message.id, message_path(message) %></td>
         <td><%= message.email %></td>
-        <td><%= message.subject %></td>
-        <td><%= message.body %></td>
-        <td><%= message.created_at.strftime("%d %b, %Y") %></td>
+        <td><%= truncate(message.subject) %></td>
+        <td><%= truncate(message.body) %></td>
+        <td><%= message.received_date.strftime("%d %b, %Y") %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_message_path(message), :class => 'btn btn-mini' %>
