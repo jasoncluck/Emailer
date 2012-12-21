@@ -95,6 +95,7 @@ class MessagesController < ApplicationController
 
   #inbox
   def inbox
+    system('rb "script/mailman_server.rb"')
   end
 
   def archive
