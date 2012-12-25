@@ -15,7 +15,7 @@ Sendmail::Application.routes.draw do
   match 'messages/archive' => 'messages#archive', :as => :archive
   match 'messages/reminder' => 'messages#reminder', :as => :reminder
   resources :messages
-  root:to => 'session#new'
+  root:to => 'sessions#new'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
