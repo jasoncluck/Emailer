@@ -4,7 +4,7 @@ gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'pg'
 
 gem "figaro", "~> 0.5.0"
 gem "therubyracer"
@@ -15,7 +15,7 @@ gem 'mailman', require: false
 gem 'delayed_job_active_record'
 
 group :production do
-	gem 'pg'
+	
 end
 
 
