@@ -59,7 +59,8 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
-
+    
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
@@ -113,6 +114,15 @@ class MessagesController < ApplicationController
     redirect_to outbox_path, notice: "Messages succesfully sent!" 
   end
 
+  def reply
+    old_message = Message.find(params[:id])
+    @message = Message.new
+    @message.body = nil
+    @message.email = old_message.email
+    @message.subject = 'Re:' + old_message.subject
+    @message.save
+  end
+
   #inbox
   def inbox
   end
@@ -125,6 +135,7 @@ class MessagesController < ApplicationController
   end
 
   def reminder
+
   end 
 
   # GET /messages/1/edit
