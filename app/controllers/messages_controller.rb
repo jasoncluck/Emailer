@@ -86,13 +86,31 @@ class MessagesController < ApplicationController
     if @message.send_date > Date.today
       redirect_to result_path, alert: "Send date is still in the future.  Either change the send date or wait"
     else
-      MessageMailer.generic_email(@message).deliver
+      MessageMailer.delay.generic_email(@message)
       #change the sent flag to true and update the sent date
       @message.sent_flag = true
       @message.sent_time = Time.now
       @message.save
       redirect_to result_path, notice: 'Message was successfully sent!'
     end
+  end
+
+  def sendallmessages
+    @unsent_messages.each do |m|
+      if m.send_date <= Date.today
+        #check send date
+        if m.send_date > Date.today
+          redirect_to result_path, alert: "Send date is still in the future.  Either change the send date or wait"
+        else
+          MessageMailer.delay.generic_email(m)
+          #change the sent flag to true and update the sent date
+          m.sent_flag = true
+          m.sent_time = Time.now
+          m.save
+        end
+      end
+    end
+    redirect_to outbox_path, notice: "Messages succesfully sent!" 
   end
 
   #inbox

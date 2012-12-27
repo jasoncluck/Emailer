@@ -8,7 +8,7 @@ Sendmail::Application.routes.draw do
   resources :sessions
   resources :users
 
-
+  match 'messages/sendall' => 'messages#sendallmessages', :as => :send_all_messages
   match 'messages/:id/send' => 'messages#sendmessage', :as => :send_letters
   match 'messages/outbox' => 'messages#outbox', :as => :outbox
   match 'messages/inbox' => 'messages#inbox', :as => :inbox
