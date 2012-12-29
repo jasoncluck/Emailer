@@ -29,7 +29,15 @@ Sendmail::Application.configure do
     :password             => Figaro.env.sender_password,
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
-
+  
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => Figaro.env.aws_bucket
+      :access_key_id => Figaro.env.aws_access_key_id
+      :secret_access_key => Figaro.aws_env.secret_acess_key
+    }
+  }
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

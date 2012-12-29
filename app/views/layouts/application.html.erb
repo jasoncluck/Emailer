@@ -29,7 +29,8 @@
 		        <li><%= link_to "Archive", archive_path %></li>
 		        <li><%= link_to "Reminder", reminder_path %></li>
          	</ul>
-         	<ul class="nav pull-right">
+	      </div>
+	      <ul class="nav pull-right">
 				  <% if current_user %>
 				    <li class='pull-right'><%= link_to "Logged in as #{current_user.email}", logout_path %></li>
 				  <% else %>
@@ -38,9 +39,6 @@
 				   <% end %>
 				</div>
 			</ul>
-	
-		   
-	      </div>
 	 
 	    </div>
 	  </div>

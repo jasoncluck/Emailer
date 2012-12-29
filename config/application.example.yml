@@ -9,3 +9,6 @@
 SENDER_EMAIL: "jcluck@gwmail.gwu.edu"
 SENDER_PASSWORD: "password"
 
+AWS_BUCKET: "test"
+AWS_ACCESS_KEY_ID: "xxxxx"
+AWS_SECRET_ACCESS_KEY: "xxxxx"
