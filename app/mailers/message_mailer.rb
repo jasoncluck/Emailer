@@ -6,8 +6,10 @@ class MessageMailer < ActionMailer::Base
 			:parts_order => [ "text/html", "text/enriched", "text/plain", "application/pdf" ]
 		def generic_email(message)
 			#using open-uri
-	    	open(message.attachment.url, 'r') do |read_file|
-	    		attachments[message.attachment_file_name] = read_file.read
+			if message.attachment?
+	    		open(message.attachment.url, 'r') do |read_file|
+	    			attachments[message.attachment_file_name] = read_file.read
+	    		end
 	    	end
 		  
 			#attachments["test.pdf"] = File.read(message.filepath)

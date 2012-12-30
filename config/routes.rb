@@ -7,6 +7,8 @@ Sendmail::Application.routes.draw do
   
   resources :sessions
   resources :users
+  match 'messages/update' => 'messages#updateall', :as => :update
+  match 'messages/edit' => 'messages#editall', :as => :edit
   match 'messages/:id/reply' => 'messages#reply', :as => :reply_message
   match 'messages/sendall' => 'messages#sendallmessages', :as => :send_all_messages
   match 'messages/:id/send' => 'messages#sendmessage', :as => :send_letters
@@ -14,7 +16,8 @@ Sendmail::Application.routes.draw do
   match 'messages/inbox' => 'messages#inbox', :as => :inbox
   match 'messages/archive' => 'messages#archive', :as => :archive
   match 'messages/reminder' => 'messages#reminder', :as => :reminder
-  resources :messages
+  resources :messages, :collection => { :editall => :post, :updateall => :put }
+
   root:to => 'sessions#new'
   # The priority is based upon order of creation:
   # first created -> highest priority.

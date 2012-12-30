@@ -1,35 +1,6 @@
-<%= form_for @message, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :subject, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :subject, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :body, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :body, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label "Attachments", :class => 'control-label' %>
-    <div class='controls'>
-      <%= f.file_field :attachment %>
-    </div>
-  </div>
-  <div class="control-group">
-      <%= f.label "Send Date", :class => 'control-label' %>
-      <div class="controls">
-        <%= f.date_select :send_date %>
-      </div>
-  </div>
-  <div class="form-actions">
+<%= form_for @message, :html => { :class => 'form-horizontal'} do |f| %>
+  <%= render 'fields', :f => f %>
+   <div class="form-actions">
     <%= f.submit "Save", :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 messages_path, :class => 'btn' %>

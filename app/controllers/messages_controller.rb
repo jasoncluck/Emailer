@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_filter :sort
   #authorize for certain actions
   before_filter :general_authorize, only: [:inbox, :outbox, :archive, :reminder, :update, :sendmessage, :destroy, :create]
-  before_filter :admin_authorize, only: [:update, :sendmessage, :destroy, :reminder]
+  before_filter :admin_authorize, only: [:update, :sendmessage, :destroy, :reminder, :editall]
 
   #sort the messages based on whether they have been sent or not
   def sort
@@ -175,7 +175,12 @@ class MessagesController < ApplicationController
       end
     end
   end
+  def editall
 
+  end
+
+  def updateall
+  end
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy

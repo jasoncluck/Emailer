@@ -9,11 +9,10 @@ class ApplicationController < ActionController::Base
   	helper_method :current_user
 
   	def admin_authorize
-  		redirect_to login_url, alert: "Not authorized - must be admin" if current_user.email != Figaro.env.sender_email
-	end
+  		  redirect_to login_url, alert: "Not authorized - must be admin" if current_user.email != Figaro.env.sender_email
+	  end
 
 	def general_authorize
-  		redirect_to login_url, alert: "Not authorized" if current_user.nil?
-
+        redirect_to login_url, alert: "Not authorized" if current_user.nil?
 	end
 end

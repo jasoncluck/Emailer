@@ -1,0 +1,18 @@
+<div class='container'>
+
+	<h1>Edit Messages</h1>
+
+	<%= form_tag update_path, :method => :put do %>
+		<% for message in @unsent_messages %>
+			<%= fields_for "messages[]", message do |f| %>
+				<%= render 'fields', :f => f %>
+			<% end %>
+		<% end %>
+		 <div class="form-actions">
+		    <%= submit_tag "Save", :class => 'btn btn-primary' %>
+		    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+		                messages_path, :class => 'btn' %>
+	  	</div>
+	<% end %>
+</div>
+
