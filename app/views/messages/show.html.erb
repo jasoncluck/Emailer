@@ -12,10 +12,10 @@
   <dd><%= @message.body %></dd>
   <dt><strong><%= model_class.human_attribute_name(:send_date) %>:</strong></dt>
   <dd><%= @message.send_date %></dd>
-  <% unless @message.attachment %>
-    <dt><strong>Attachement:</strong></dt>
-    <dd><%= @message.attachment.url %></dd>
-  <% end %>
+  
+  <dt><strong>Attachement:</strong></dt>
+  <dd><%= @message.attachment.url %></dd>
+  
 </dl>
 
 <div class="form-actions">

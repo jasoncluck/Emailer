@@ -180,6 +180,8 @@ class MessagesController < ApplicationController
   end
 
   def updateall
+    Message.update(params[:messages].keys, params[:messages].values)
+    redirect_to outbox_path, notice: "Emails updated!"
   end
   # DELETE /messages/1
   # DELETE /messages/1.json

@@ -2,10 +2,11 @@
 
 	<h1>Edit Messages</h1>
 
-	<%= form_tag update_path, :method => :put do %>
+	<%= form_tag update_path, :action => :upload, :multipart => true, :method => :put do %>
 		<% for message in @unsent_messages %>
 			<%= fields_for "messages[]", message do |f| %>
 				<%= render 'fields', :f => f %>
+				<%= "Current Attachment: #{message.attachment.url}" %>
 			<% end %>
 		<% end %>
 		 <div class="form-actions">
