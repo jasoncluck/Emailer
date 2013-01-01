@@ -6,6 +6,10 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @message.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cc) %>:</strong></dt>
+  <dd><%= @message.cc %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bcc) %>:</strong></dt>
+  <dd><%= @message.bcc %></dd>
   <dt><strong><%= model_class.human_attribute_name(:subject) %>:</strong></dt>
   <dd><%= @message.subject %></dd>
   <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>

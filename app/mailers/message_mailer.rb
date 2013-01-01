@@ -13,7 +13,7 @@ class MessageMailer < ActionMailer::Base
 	    	end
 		  
 			#attachments["test.pdf"] = File.read(message.filepath)
-			mail(:to => message.email, :subject => message.subject, :body => message.body)
+			mail(:to => message.email, :subject => message.subject, :body => message.body, :cc => message.cc, :bcc => message.bcc)
 
 
 	end

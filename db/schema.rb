@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228204312) do
+ActiveRecord::Schema.define(:version => 20130101180505) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20121228204312) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.string   "cc"
+    t.string   "bcc"
   end
 
   create_table "users", :force => true do |t|
