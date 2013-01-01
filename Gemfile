@@ -13,6 +13,7 @@ gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem 'mailman', require: false
 gem 'delayed_job_active_record'
+gem 'simple_form'
 
 group :production do
 	
