@@ -5,4 +5,5 @@
   <%= f.input :subject, :label => "Subject", :required => false %>
   <%= f.input :body, :label => "Body" %>
   <%= f.input :attachment, :label => "Attachment" %>
+  <%= f.input :signature, :label => "Signature", :collection => Signature.all, :default => 1, :as => "radio_buttons" %>
   <%= f.input :send_date, :label => "Send Date" %>

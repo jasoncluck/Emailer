@@ -65,7 +65,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
-    
+    @message.signature = 1
     
     respond_to do |format|
       format.html # new.html.erb

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130102053430) do
+ActiveRecord::Schema.define(:version => 20130102063330) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130102053430) do
     t.datetime "attachment_updated_at"
     t.string   "cc"
     t.string   "bcc"
+    t.integer  "signature"
   end
 
   create_table "signatures", :force => true do |t|
