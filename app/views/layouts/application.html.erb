@@ -27,8 +27,6 @@
 		        <li><%= link_to "Outbox", outbox_path, class: "active" %></li>
 		        <li><%= link_to "Inbox", inbox_path %></li>
 		        <li><%= link_to "Archive", archive_path %></li>
-		        <li><%= link_to "Reminder", reminder_path %></li>
-		        <li><%= link_to "Edit", edit_path %></li>
          	</ul>
 	      
 	      	<ul class="nav pull-right">
@@ -45,7 +43,25 @@
 	  </div>
 	</div>
 	<%= render 'layouts/flash_messages' %>
-	<%= yield %>
+
+	<% if current_user != nil and current_user.email == Figaro.env.sender_email %>
+		<div class="span2">
+		<ul class="nav nav-list">
+		  <li class="nav-header">Admin Controls</li>
+		  <li><%= link_to "Edit Messages", edit_path %></li>
+		  <li><%= link_to "Signatures", signatures_path %></li>
+		  <li><%= link_to "Reminder", reminder_path %></li>
+
+
+	 	</ul>
+		</div>
+		<div class="span10">
+			<%= yield %>
+		</div>
+	<% else %>
+		<%= yield %>
+	<% end %>
+	
 
 </body>
 </html>

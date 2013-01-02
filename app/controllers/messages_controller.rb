@@ -33,11 +33,17 @@ class MessagesController < ApplicationController
       #sent messages from earliest to oldest
       @sent_messages = @sent_messages.sort_by( &:sent_time )
 
+      #get all the signatures too
+      @signatures = Signature.all
+
   end
   # GET /messages
   # GET /messages.json
   def outbox
 
+    #handle new signatures
+    @general_signature = params[:general_signature]
+    @gw_signature = params[:gw_signature]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @unsent_messages }
@@ -183,6 +189,12 @@ class MessagesController < ApplicationController
     Message.update(params[:messages].keys, params[:messages].values)
     redirect_to outbox_path, notice: "Emails updated!"
   end
+
+  def signature
+    
+  end
+
+
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
