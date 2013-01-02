@@ -66,6 +66,7 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @message.signature = 1
+    @message.send_date = Date.today
     
     respond_to do |format|
       format.html # new.html.erb
