@@ -36,6 +36,9 @@
     <dt><strong>Attachement:</strong></dt>
     <dd><%= @message.attachment.url %></dd>
   <% end %>
+
+  <dt><strong><%= model_class.human_attribute_name(:signature) %>:</strong></dt>
+  <dd><%= Signature.find(@message.signature).signature %></dd>
 </dl>
 
 <div class="form-actions">
