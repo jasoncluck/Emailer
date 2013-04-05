@@ -5,7 +5,7 @@ namespace :mailman do
   desc "Get recent emails"
   task :getemails => :environment do
   	#poll once for the newest emails
-    Mailman.config.poll_interval = 10
+    Mailman.config.poll_interval = 0
 
 	Mailman.config.pop3 = {
 	  server: 'pop.gmail.com', port: 995, ssl: true,

@@ -2,8 +2,8 @@ class MessagesController < ApplicationController
   #sort the messages
   before_filter :sort
   #authorize for certain actions
-  before_filter :general_authorize, only: [:inbox, :outbox, :archive, :reminder, :update, :destroy, :create]
-  before_filter :admin_authorize, only: [:update, :sendmessage, :sendallmessages, :destroy, :reminder, :editall]
+  before_filter :general_authorize, only: [:inbox, :edit, :outbox, :archive, :reminder, :update, :destroy, :create]
+  before_filter :admin_authorize, only: [:sendmessage, :sendallmessages, :reminder, :editall]
 
   #sort the messages based on whether they have been sent or not
   def sort
@@ -158,7 +158,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
 
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to outbox_path, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
@@ -174,7 +174,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+        format.html { redirect_to outbox_path, notice: 'Message was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

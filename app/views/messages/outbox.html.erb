@@ -7,7 +7,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:subject) %></th>
       <th><%= model_class.human_attribute_name(:body) %></th>
@@ -19,7 +18,6 @@
   <tbody>
     <% @unsent_messages.each do |message| %>
       <tr>
-        <td><%= link_to message.id, message_path(message) %></td>
         <td><%= message.email %></td>
         <td><%= truncate(message.subject) %></td>
         <td><%= truncate(message.body) %></td>
