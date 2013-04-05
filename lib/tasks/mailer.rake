@@ -17,7 +17,7 @@ namespace :mailman do
 	Mailman::Application.run do
 	  default do
 	   if message.date > Date.today << 1
-	   		Message.conv("UTF-8//IGNORE", "US-ASCII", message)
+	   		#Message.conv("UTF-8//IGNORE", "US-ASCII", message)
 	    	Message.create! subject: message.subject, email: message.from.first, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
 	    end
 	  end
