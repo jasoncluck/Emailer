@@ -17,7 +17,9 @@ namespace :mailman do
 	Mailman::Application.run do
 	  default do
 	   if message.date > Date.today << 1
-	    	Message.create! subject: message.subject, email: message.from.first, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date
+	   		begin:
+	    		Message.create! subject: message.subject, email: message.from.first, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date
+	    	rescue:	
 	    end
 	  end
 	end
