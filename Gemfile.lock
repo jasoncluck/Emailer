@@ -45,6 +45,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     commonjs (0.2.6)
+    daemons (1.1.9)
     delayed_job (3.0.4)
       activesupport (~> 3.0)
     delayed_job_active_record (0.3.3)
@@ -158,6 +159,7 @@ DEPENDENCIES
   aws-sdk
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
+  daemons
   delayed_job_active_record
   figaro (~> 0.5.0)
   jquery-rails

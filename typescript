@@ -1,0 +1,12 @@
+Script started on Sun Apr  7 23:26:35 2013
+[?1034hbash-3.2$ 
+bash-3.2$ q
+bash: q: command not found
+bash-3.2$ quit
+bash: quit: command not found
+bash-3.2$ 
+bash-3.2$ 
+bash-3.2$ exit
+exit
+
+Script done on Sun Apr  7 23:26:42 2013
