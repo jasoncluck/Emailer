@@ -44,20 +44,21 @@
 	</div>
 	<%= render 'layouts/flash_messages' %>
 
-	<% if Figaro.env.sender_email.include? current_user.email %>
-		<div class="span2">
-		<ul class="nav nav-list">
-		  <li class="nav-header">Admin Controls</li>
-		  <li><%= link_to "Edit Messages", edit_path %></li>
-		  <li><%= link_to "Signatures", signatures_path %></li>
-		  <li><%= link_to "Reminder", reminder_path %></li>
-
-
-	 	</ul>
-		</div>
-		<div class="span10">
-			<%= yield %>
-		</div>
+	<% if current_user != nil %>
+		<% if Figaro.env.sender_email.include? current_user.email %>
+			<div class="span2">
+				<ul class="nav nav-list">
+				  <li class="nav-header">Admin Controls</li>
+				  <li><%= link_to "Edit Messages", edit_path %></li>
+				  <li><%= link_to "Signatures", signatures_path %></li>
+				  <li><%= link_to "Reminder", reminder_path %></li>
+		 		</ul>
+			</div>
+		
+			<div class="span10">
+				<%= yield %>
+			</div>
+		<% end %>
 	<% else %>
 		<%= yield %>
 	<% end %>
