@@ -58,8 +58,12 @@
 			<div class="span10">
 				<%= yield %>
 			</div>
+		<% else %>
+			<!-- must be an RA account so yield -->
+			<%= yield %>
 		<% end %>
-	<% else %>
+		<!-- Otherwise it's nobody so just yield the login screen for example -->
+	<% else %>	
 		<%= yield %>
 	<% end %>
 	

@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
         #redirect_to login_url, alert: "Not authorized" if current_user.email != Figaro.env.ra_emails
         redirect_to login_url, alert: "Not authorized" if not Figaro.env.ra_emails.include? current_user.email
 	 end
+
+   def illegal_session
+      redirect_to login_url, alert: "Must be logged in" if current_user.nil?
+   end
 end
