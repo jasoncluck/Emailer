@@ -44,7 +44,7 @@
 	</div>
 	<%= render 'layouts/flash_messages' %>
 
-	<% if current_user != nil and current_user.email == Figaro.env.sender_email %>
+	<% if Figaro.env.sender_email.include? current_user.email %>
 		<div class="span2">
 		<ul class="nav nav-list">
 		  <li class="nav-header">Admin Controls</li>
