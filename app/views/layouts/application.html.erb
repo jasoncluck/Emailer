@@ -44,8 +44,7 @@
 	</div>
 	<%= render 'layouts/flash_messages' %>
 
-	<% if current_user != nil %>
-		<% if Figaro.env.sender_email.include? current_user.email %>
+	<% if current_user != nil && current_user.admin? %>
 			<div class="span2">
 				<ul class="nav nav-list">
 				  <li class="nav-header">Admin Controls</li>
@@ -58,10 +57,6 @@
 			<div class="span10">
 				<%= yield %>
 			</div>
-		<% else %>
-			<!-- must be an RA account so yield -->
-			<%= yield %>
-		<% end %>
 		<!-- Otherwise it's nobody so just yield the login screen for example -->
 	<% else %>	
 		<%= yield %>

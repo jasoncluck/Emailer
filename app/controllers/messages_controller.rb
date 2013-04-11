@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
   before_filter :sort
   #authorize for certain actions
   before_filter :illegal_session
-  before_filter :general_authorize, only: [:inbox, :edit, :outbox, :archive, :reminder, :update, :destroy, :create]
   before_filter :admin_authorize, only: [:sendmessage, :sendallmessages, :reminder, :editall]
 
   #sort the messages based on whether they have been sent or not
