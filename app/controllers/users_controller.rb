@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 		if (Figaro.env.ra_emails.include? @user.email) && @user.save 
 			session[:user_id] = @user.id
 			# Switch the admin boolean if this user is an admin
-			if (Figaro.env.sender_email.include? @user.email)
+			if (Figaro.env.sender_email.include? @user.email) || (Figaro.env.admin_emails.include? @user.email)
 				@user.admin = true
 				@user.save
 			end

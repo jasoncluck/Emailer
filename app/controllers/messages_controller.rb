@@ -94,7 +94,7 @@ class MessagesController < ApplicationController
     if @message.send_date > Date.today
       redirect_to result_path, alert: "Send date is still in the future.  Either change the send date or wait"
     else
-      MessageMailer.delay.generic_email(@message)
+      MessageMailer.generic_email(@message).deliver
       #change the sent flag to true and update the sent date
       @message.sent_flag = true
       @message.sent_time = Time.now
@@ -110,7 +110,7 @@ class MessagesController < ApplicationController
         if m.send_date > Date.today
           redirect_to result_path, alert: "Send date is still in the future.  Either change the send date or wait"
         else
-          MessageMailer.delay.generic_email(m)
+          MessageMailer.generic_email(m).deliver
           #change the sent flag to true and update the sent date
           m.sent_flag = true
           m.sent_time = Time.now

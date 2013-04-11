@@ -9,7 +9,7 @@ namespace :mailman do
 
 	Mailman.config.pop3 = {
 	  server: 'pop.gmail.com', port: 995, ssl: true,
-	  username: "jcluck@gwmail.gwu.edu",
+	  username: Figaro.env.sender_email,
 	  password: Figaro.env.sender_password
 	}
 
