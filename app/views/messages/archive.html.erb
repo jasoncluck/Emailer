@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:subject) %></th>
       <th><%= model_class.human_attribute_name(:body) %></th>
@@ -17,9 +16,8 @@
   <tbody>
     <% @sent_messages.each do |message| %>
       <tr>
-        <td><%= link_to message.id, message_path(message) %></td>
         <td><%= message.email %></td>
-        <td><%= truncate(message.subject) %></td>
+        <td><%= link_to truncate(message.subject), message_path(message) %></td>
         <td><%= truncate(message.body) %></td>
         <td><%= message.sent_time.strftime("%d %b, %Y") %></td>
 

@@ -1,23 +1,26 @@
   <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
+    <%= f.label "To", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
-
-  <div class="control-group">
-    <%= f.label :cc, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :bcc, :class => 'text_field' %>
+  <% if message.cc %>
+    <div class="control-group">
+      <%= f.label :cc, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :cc, :class => 'text_field' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class="control-group">
-    <%= f.label :bcc, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :bcc, :class => 'text_field' %>
+  <% if message.bcc %>
+    <div class="control-group">
+      <%= f.label :bcc, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :bcc, :class => 'text_field' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="control-group">
     <%= f.label :subject, :class => 'control-label' %>
@@ -32,18 +35,21 @@
       <%= f.text_area :body, :class => 'text_area' %>
     </div>
   </div>
-
-  <div class="control-group">
-    <%= f.label "Attachments", :class => 'control-label' %>
-    <div class='controls'>
-      <%= f.file_field :attachment %>
+  <% if not message.attachment_file_name.nil? %>
+    <div class="control-group">
+      <%= f.label "Attachments", :class => 'control-label' %>
+      <div class='controls'>
+        <%= f.file_field :attachment %>
+      </div>
     </div>
-  </div>
-
+    <%= "Current Attachment: #{message.attachment.url}" %>
+  <% end %>
   <div class="control-group">
       <%= f.label "Send Date", :class => 'control-label' %>
       <div class="controls">
         <%= f.date_select :send_date %>
       </div>
   </div>
+
+
  

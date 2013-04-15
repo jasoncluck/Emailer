@@ -1,8 +1,9 @@
-<%= f.input :email, :placeholder => 'user@domain.com', :required => false, :label => "Email" %>
-<%= f.input :cc, :label => "Cc" %>
-<%= f.input :bcc, :label => "Bcc" %>
-<%= f.input :subject, :label => "Subject", :required => false %>
-<%= f.input :body, :label => "Body" %>
-<%= f.input :attachment, :label => "Attachment" %>
+<%= f.input :email, input_html: { class: 'text_field' }, :placeholder => 'user@domain.com', :required => false, :label => "To" %>
+<%= f.input :cc, input_html: { class: 'text_field' }, :label => "Cc", :class => "text_field" %>
+<%= f.input :bcc, input_html: { class: 'text_field' }, :label => "Bcc" %>
+<%= f.input :subject, input_html: { class: 'text_field' }, :label => "Subject", :required => false %>
+<%= f.input :body, input_html: { class: 'text_field' }, :label => "Body" %>
+<%= f.input :attachment, input_html: { class: 'text_field' }, :label => "Attachment" %>
 <%= f.input :signature, :label => "Signature", :collection => Signature.all, :default => 1, :as => "radio_buttons" %>
 <%= f.input :send_date, :label => "Send Date" %>
+

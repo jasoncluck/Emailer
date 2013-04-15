@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
       #unsent messages from oldest to earliest
       @unsent_messages = @unsent_messages.sort_by(&:send_date)
       #sent messages from earliest to oldest
-      @sent_messages = @sent_messages.sort_by( &:sent_time )
+      @sent_messages = @sent_messages.sort_by( &:sent_time ).reverse
 
       #get all the signatures too
       @signatures = Signature.all
@@ -126,7 +126,9 @@ class MessagesController < ApplicationController
     @message = Message.new
     @message.body = nil
     @message.email = old_message.email
-    @message.subject = 'Re:' + old_message.subject
+    @message.subject = old_message.subject
+    @message.signature = 1
+    @message.send_date = Date.today
     @message.save
   end
 
