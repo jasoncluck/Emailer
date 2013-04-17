@@ -8,8 +8,8 @@ Mailman.config.poll_interval = 10
 
 Mailman.config.imap = {
   server: 'imap.gmail.com', port: 993, ssl: true,
-  username: "jcluck@gwmail.gwu.edu",
-  password: "password"
+  username: Figaro.env.sender_email
+  password: Figaro.env.sender_password
 }
 
 Mailman::Application.run do
