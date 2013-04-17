@@ -18,8 +18,10 @@ namespace :mailman do
 	  default do
 	   if message.date > Date.today << 1
 	   		#Message.conv("UTF-8//IGNORE", "US-ASCII", message)
-	   		
-    		Message.create! subject: message.subject, email: message.from, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
+	   		message.email ||= "invalid@blank.com"
+			message.subject ||= "Invalid subject line - converted"
+    		Message.create subject: message.subject, email: message.from, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
+    		Message.save
 	    	
 	    end
 	  end
