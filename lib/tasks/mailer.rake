@@ -20,8 +20,12 @@ namespace :mailman do
 	   		#Message.conv("UTF-8//IGNORE", "US-ASCII", message)
 	   		message.email ||= "invalid@blank.com"
 			message.subject ||= "Invalid subject line - converted"
-    		Message.create subject: message.subject, email: message.from, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
-    		Message.save
+			begin:
+    			Message.create subject: message.subject, email: message.from, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
+    			Message.save
+    		rescue:
+    			puts "Skipping message - invalid formatting"
+
 	    	
 	    end
 	  end
