@@ -17,15 +17,10 @@ namespace :mailman do
 	Mailman::Application.run do
 	  default do
 	   if message.date > Date.today << 1
-	   		#Message.conv("UTF-8//IGNORE", "US-ASCII", message)
 			begin
-				message.subject ||= "Invalid subject line - converted"
-				message.from ||= "invalid@blank.com"
-
-    			Message.create subject: message.subject, email: message.from, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
-    			Message.save
-    		rescue
-    			puts "Skipping message - invalid formatting"
+    			Message.create! subject: message.subject, email: message.from.first, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
+    		rescue => error
+    			puts error
     		end
 	    	
 	    end

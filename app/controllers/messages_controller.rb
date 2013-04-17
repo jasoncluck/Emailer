@@ -7,29 +7,22 @@ class MessagesController < ApplicationController
 
   #sort the messages based on whether they have been sent or not
   def sort
-      all_messages = Message.all
 
-      @sent_messages = Array.new  #archive
-      @unsent_messages = Array.new  #outbox
-      @received_messages = Array.new #inbox
+      #get rid of all received messages that are older than week
+      Message.destroy_all :received_time => 1.year.ago..1.week.ago
 
-      all_messages.each do |m|
-        if m.receive_flag
-          @received_messages << m
-        else 
-          if m.sent_flag
-            @sent_messages << m
-          else
-            @unsent_messages << m
-          end
-        end
-      end
+      @received_messages = Message.where(:received_time => 1.week.ago..Time.now) #inbox - only the past week of messages
+      @sent_messages = Message.where(:sent_flag => true) #archive
+      @unsent_messages = Message.where(:sent_flag => nil) #outbox
+
+      
+
 
       #now sort according to what type of message they are
       #received messages - from earliest to oldest
       @received_messages = @received_messages.sort_by( &:received_time ).reverse
       #unsent messages from oldest to earliest
-      @unsent_messages = @unsent_messages.sort_by(&:send_date)
+      @unsent_messages = @unsent_messages.sort_by( &:send_date )
       #sent messages from earliest to oldest
       @sent_messages = @sent_messages.sort_by( &:sent_time ).reverse
 
@@ -67,7 +60,6 @@ class MessagesController < ApplicationController
     @message = Message.new
     @message.signature = 1
     @message.send_date = Date.today
-    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
@@ -134,6 +126,7 @@ class MessagesController < ApplicationController
 
   #inbox
   def inbox
+
   end
 
   def archive
