@@ -25,7 +25,7 @@ namespace :mailman do
     			Message.save
     		rescue
     			puts "Skipping message - invalid formatting"
-
+    		end
 	    	
 	    end
 	  end
