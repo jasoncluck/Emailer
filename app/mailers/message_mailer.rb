@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class MessageMailer < ActionMailer::Base
-	default :from => "jcluck@gwmail.gwu.edu",
+	default :from => Figaro.env.sender_email,
 			:conent_type => 'multipart/alternative',
 			:parts_order => [ "text/html", "text/enriched", "text/plain", "application/pdf" ]
 		def generic_email(message)

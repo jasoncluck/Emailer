@@ -10,9 +10,12 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "paperclip", "~> 3.0"
+gem "paperclip-dropbox"
 gem 'aws-sdk'
 gem 'mailman', require: false
 gem 'simple_form'
+
+
 
 
 group :production do
