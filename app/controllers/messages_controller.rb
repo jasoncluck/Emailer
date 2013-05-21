@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
       #get rid of all received messages that are older than week
       Message.destroy_all :received_time => 1.year.ago..1.week.ago
 
-      @received_messages = Message.where(:received_time => 1.week.ago..Time.now) #inbox - only the past week of messages
+      @received_messages = Message.where(:received_time => 1.week.ago..Time.now).last(50) #inbox - only the past week of messages
       @sent_messages = Message.where(:sent_flag => true) #archive
       @unsent_messages = Message.where(:sent_flag => nil) #outbox
 
@@ -27,7 +27,7 @@ class MessagesController < ApplicationController
       @sent_messages = @sent_messages.sort_by( &:sent_time ).reverse
 
       #get all the signatures too
-      @signatures = Signature.all
+      @signatures = Signature
 
   end
   # GET /messages
