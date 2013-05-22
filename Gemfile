@@ -14,7 +14,7 @@ gem "paperclip-dropbox"
 gem 'aws-sdk'
 gem 'mailman', require: false
 gem 'simple_form'
-
+gem 'newrelic_rpm'
 
 
 
