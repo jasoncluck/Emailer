@@ -19,7 +19,6 @@ class MessagesController < ApplicationController
 
       #now sort according to what type of message they are
       #received messages - from earliest to oldest
-      @received_messages = @received_messages.sort_by( &:received_time ).reverse
       #unsent messages from oldest to earliest
       @unsent_messages = @unsent_messages.sort_by( &:send_date )
       #sent messages from earliest to oldest
@@ -130,6 +129,8 @@ class MessagesController < ApplicationController
     Message.destroy_all :received_time => 1.year.ago..3.days.ago
 
     @received_messages = Message.where(:received_time => 1.week.ago..Time.now) #inbox - only the past week of messages
+    @received_messages = @received_messages.sort_by( &:received_time ).reverse
+
   end
 
   def archive
