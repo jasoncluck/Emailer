@@ -8,10 +8,9 @@ class MessagesController < ApplicationController
   #sort the messages based on whether they have been sent or not
   def sort
 
-      #get rid of all received messages that are older than week
-      Message.destroy_all :created_at => 1.year.ago..1.week.ago
+    
 
-      @received_messages = Message.where(:received_time => 1.week.ago..Time.now).last(100) #inbox - only the past week of messages
+      
       @sent_messages = Message.where(:sent_flag => true) #archive
       @unsent_messages = Message.where(:sent_flag => nil) #outbox
 
@@ -127,6 +126,10 @@ class MessagesController < ApplicationController
   #inbox
   def inbox
 
+    #get rid of all received messages that are older than week
+    Message.destroy_all :received_time => 1.year.ago..3.days.ago
+
+    @received_messages = Message.where(:received_time => 1.week.ago..Time.now) #inbox - only the past week of messages
   end
 
   def archive
