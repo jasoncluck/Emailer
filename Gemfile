@@ -9,13 +9,12 @@ gem "figaro", "~> 0.5.0"
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
-gem "paperclip", "~> 3.0"
-gem "paperclip-dropbox"
+gem "paperclip"
 gem 'aws-sdk'
 gem 'mailman', require: false
 gem 'simple_form'
 gem 'newrelic_rpm'
-gem 'oink'
+gem 'god'
 
 
 group :production do

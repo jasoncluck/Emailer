@@ -45,15 +45,13 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     commonjs (0.2.6)
-    dropbox-sdk (1.5.1)
-      json
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     figaro (0.5.0)
       rails (~> 3.0)
+    god (0.13.2)
     hike (1.2.1)
-    hodel_3000_compliant_logger (0.1.1)
     httparty (0.9.0)
       multi_json (~> 1.0)
       multi_xml
@@ -86,18 +84,12 @@ GEM
     multi_xml (0.5.1)
     newrelic_rpm (3.6.2.96)
     nokogiri (1.5.6)
-    oink (0.10.1)
-      activerecord
-      hodel_3000_compliant_logger
     paperclip (3.3.1)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
-    paperclip-dropbox (1.1.2)
-      dropbox-sdk (~> 1.3)
-      paperclip (~> 3.1)
     pg (0.14.1)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -164,13 +156,12 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
   figaro (~> 0.5.0)
+  god
   jquery-rails
   less-rails
   mailman
   newrelic_rpm
-  oink
-  paperclip (~> 3.0)
-  paperclip-dropbox
+  paperclip
   pg
   rails (= 3.2.9)
   sass-rails (~> 3.2.3)
