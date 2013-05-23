@@ -124,8 +124,8 @@ class MessagesController < ApplicationController
 
   #inbox
   def inbox
-    @received_messages = Message.where(:received_time => 1.week.ago..Time.now) #inbox - only the past week of messages
-    @received_messages = @received_messages.sort_by( &:received_time ).reverse
+    @received_messages = Message.find_all_by_received_time(1.week.ago..Time.now)
+    
 
   end
 
