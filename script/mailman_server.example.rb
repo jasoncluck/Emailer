@@ -14,7 +14,7 @@ Mailman.config.imap = {
 
 Mailman::Application.run do
   default do
-    Message.create! subject: message.subject, email: message.from.first, body: message.body.decoded, receive_flag: true, sent_flag: false
+    Message.create! subject: message.subject, email: message.from.first, body: message.body, receive_flag: true, sent_flag: false
   end
 end
 

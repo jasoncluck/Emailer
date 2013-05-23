@@ -7,15 +7,8 @@ class MessagesController < ApplicationController
 
   #sort the messages based on whether they have been sent or not
   def sort
-
-    
-
-      
       @sent_messages = Message.where(:sent_flag => true) #archive
       @unsent_messages = Message.where(:sent_flag => nil) #outbox
-
-      
-
 
       #now sort according to what type of message they are
       #received messages - from earliest to oldest
@@ -124,7 +117,9 @@ class MessagesController < ApplicationController
 
   #inbox
   def inbox
-    
+
+    #get rid of all received messages that are older than week
+    Message.destroy_all :received_time => 1.year.ago..2.days.ago
     @received_messages = Message.find_all_by_received_time(1.week.ago..Time.now)
     
 
