@@ -15,7 +15,7 @@ gem 'aws-sdk'
 gem 'mailman', require: false
 gem 'simple_form'
 gem 'newrelic_rpm'
-
+gem 'oink'
 
 
 group :production do

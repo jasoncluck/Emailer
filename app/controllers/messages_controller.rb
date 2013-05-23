@@ -124,10 +124,6 @@ class MessagesController < ApplicationController
 
   #inbox
   def inbox
-
-    #get rid of all received messages that are older than week
-    Message.destroy_all :received_time => 1.year.ago..3.days.ago
-
     @received_messages = Message.where(:received_time => 1.week.ago..Time.now) #inbox - only the past week of messages
     @received_messages = @received_messages.sort_by( &:received_time ).reverse
 

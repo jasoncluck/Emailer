@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20130411003307) do
     t.boolean  "sent_flag"
     t.boolean  "receive_flag"
     t.date     "sent_time"
-    t.date     "send_date",               :default => '2012-12-27'
+    t.date     "send_date",              
     t.date     "received_time"
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false

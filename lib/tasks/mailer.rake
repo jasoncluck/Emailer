@@ -13,16 +13,18 @@ namespace :mailman do
 	  password: Figaro.env.sender_password
 	}
 
+	#get rid of all received messages that are older than week
+    Message.destroy_all :received_time => 1.year.ago..3.days.ago
+
 
 	Mailman::Application.run do
 	  default do
-	   if message.date > Date.today << 1
+		  	if message.date > Date.today << 1
 			begin
-    			Message.create! subject: message.subject, email: message.from.first, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
-    		rescue => error
-    			puts error
-    		end
-	    	
+	    		Message.create! subject: message.subject, email: message.from.first, body: message.body.decoded, receive_flag: true, sent_flag: false, received_time: message.date	
+	    	rescue => error
+	    		puts error
+	    	end	
 	    end
 	  end
 	end
